@@ -1,0 +1,75 @@
+import Blockly from '../../../../scratch-blocks-develop';
+
+Blockly.Msg.ROBOT_HUE = '#3bd149';
+Blockly.Msg.TOUCH_HUE = '#ffac05';
+Blockly.Msg.LOGIC_HUE = '#03dfc7';
+Blockly.Msg.LOOPS_HUE = '#09daff';
+Blockly.Msg.COLOUR_HUE = '#00a6ff';
+Blockly.Msg.TEXTS_HUE = '#2e77fe';
+Blockly.Msg.MATH_HUE = '#ff6404';
+Blockly.Msg.VARIABLES_HUE = '#df59fd';
+Blockly.Msg.LISTS_HUE = '#ffac05';
+Blockly.Msg.PROCEDURES_HUE = '#8232fa';
+
+Blockly.Msg.CATLOGIC = '逻辑';
+Blockly.Msg.CATLOOPS = '循环';
+Blockly.Msg.CATMATH = '数学';
+Blockly.Msg.CATTEXT = '文本';
+Blockly.Msg.CATLISTS = '列表';
+Blockly.Msg.CATCOLOUR = '颜色';
+Blockly.Msg.CATVARIABLES = '变量';
+Blockly.Msg.CATFUNCTIONS = '函数';
+Blockly.Msg.LISTVARIABLE = '列表';
+Blockly.Msg.TEXTVARIABLE = '文本';
+Blockly.Msg.CATROBOT = '机器人';
+Blockly.Msg.CATTOUCH = '触发';
+
+Blockly.Msg.ROBOT_CHANGE_ANGLE_SERVO = '%1 号角度电机在时间 %2 ms内转到角度 %3';
+Blockly.Msg.ROBOT_CHANGE_SPEED_SERVO = '%1 号速度电机在时间 %2 ms内转到速度 %3';
+Blockly.Msg.ROBOT_PLAY_MUSIC = '播放音乐 %1';
+Blockly.Msg.ROBOT_PLAY_ACTION = '执行动作 %1';
+Blockly.Msg.ROBOT_PLAY_EMOTION = '显示表情 %1';
+Blockly.Msg.ROBOT_PLAY_COLOUR = '状态灯显示 %1';
+Blockly.Msg.ROBOT_VOICE_RECOGNIZE = '语音识别';
+Blockly.Msg.ROBOT_RESET_ACTION = '动作复位';
+Blockly.Msg.ROBOT_RESET_SPEED = '停止速度舵机';
+Blockly.Msg.ROBOT_TAKE_PHOTO = '拍照';
+Blockly.Msg.ROBOT_DELAY_TIME = '延迟 %1 秒';
+Blockly.Msg.ROBOT_STOP_MUSIC = '停止音乐';
+Blockly.Msg.ROBOT_TALK = '说话 %1';
+Blockly.Msg.ROBOT_NORMAL_FACE = '正常';
+Blockly.Msg.COLOUR_RGB_COLOR = '颜色 R %1 G %2 B %3';
+Blockly.Msg.TOUCH_SCREEN = '屏幕点击 %1';
+Blockly.Msg.TOUCH_UP = '上';
+Blockly.Msg.TOUCH_DOWN = '下';
+Blockly.Msg.TOUCH_LEFT = '左';
+Blockly.Msg.TOUCH_RIGHT = '右';
+Blockly.Msg.TOUCH_SPECIAL_RESPONSE = '特殊响应 %1';
+Blockly.Msg.TOUCH_START_UP = '启动运行';
+Blockly.Msg.TOUCH_STANDBY_1 = '待机状态1';
+Blockly.Msg.TOUCH_STANDBY_2 = '待机状态2';
+Blockly.Msg.TOUCH_STANDBY_3 = '待机状态3';
+Blockly.Msg.TOUCH_STANDBY_4 = '待机状态4';
+Blockly.Msg.TOUCH_STANDBY_5 = '待机状态5';
+Blockly.Msg.TOUCH_STANDBY_6 = '待机状态6';
+Blockly.Msg.TOUCH_LISTEN = '当听到 %1';
+Blockly.Msg.TEXT_HELLO = '你好';
+Blockly.Msg.TEXT_INCLUDE = '当 %1 包含 %2';
+
+// ----------------- Lua 相关模块 ----------------
+Blockly.Msg.ROBOT_BLOCKLY_IO_WRITE = '写I/O操作 P %1 %2 第 %3 个io写操作 %4';
+Blockly.Msg.ROBOT_BLOCKLY_IO_READ = '读I/O口操作 P %1 %2 第 %3 个io读操作';
+Blockly.Msg.ROBOT_BLOCKLY_IO_DELAYMS = '延时 %1 %2 毫秒';
+Blockly.Msg.ROBOT_BLOCKLY_IO_INITDHT11 = '初始化P %1 口的温湿度传感器';
+Blockly.Msg.ROBOT_BLOCKLY_IO_READ_TEMP = '读第P %1 口的温度';
+Blockly.Msg.ROBOT_BLOCKLY_IO_TUBE_ALL = '数码管P %1 口的显示 %2 %3';
+Blockly.Msg.ROBOT_BLOCKLY_IO_LED = 'P %1 口的显示 %2 %3 彩灯';
+Blockly.Msg.ROBOT_BLOCKLY_IO_KEY = '按键P %1 口';
+Blockly.Msg.ROBOT_BLOCKLY_IO_PRINT = '串口打印 %1 %2';
+Blockly.Msg.ROBOT_BLOCKLY_IO_UART_REC = '串口接收';
+Blockly.Msg.ROBOT_BLOCKLY_IO_BEE = '使P %1 口 %2';
+Blockly.Msg.ROBOT_BLOCKLY_IO_READ_ACTION = '读取第 %1 个动作';
+Blockly.Msg.ROBOT_BLOCKLY_IO_PLAY_ACTION = '运行缓存动作组';
+Blockly.Msg.ROBOT_BLOCKLY_IO_READ_U1TRA = '读取P %1 口测到的超声波距离';
+Blockly.Msg.ROBOT_BLOCKLY_IO_READ_HUMI = '读第P %1 口的湿度'
+;

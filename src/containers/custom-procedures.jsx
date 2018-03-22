@@ -3,7 +3,7 @@ import defaultsDeep from 'lodash.defaultsdeep';
 import PropTypes from 'prop-types';
 import React from 'react';
 import CustomProceduresComponent from '../components/custom-procedures/custom-procedures.jsx';
-import ScratchBlocks from 'scratch-blocks';
+import ScratchBlocks from '../../../scratch-blocks-develop';
 import {connect} from 'react-redux';
 
 class CustomProcedures extends React.Component {
@@ -40,7 +40,6 @@ class CustomProcedures extends React.Component {
         ScratchBlocks.Blocks.defaultToolbox = null;
         this.workspace = ScratchBlocks.inject(this.blocks, workspaceConfig);
         ScratchBlocks.Blocks.defaultToolbox = oldDefaultToolbox;
-
         // Create the procedure declaration block for editing the mutation.
         this.mutationRoot = this.workspace.newBlock('procedures_declaration');
         // Make the declaration immovable, undeletable and have no context menu
