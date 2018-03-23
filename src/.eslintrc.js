@@ -12,6 +12,7 @@ module.exports = {
         'import/no-commonjs': 'error',
         'import/no-amd': 'error',
         'import/no-nodejs-modules': 'error',
-        'linebreak-style': ["error", "windows"],
+        'linebreak-style': 0,
+        "no-console": "off",
     }
 };

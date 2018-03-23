@@ -5,6 +5,8 @@ import VM from 'scratch-vm';
 
 import analytics from '../lib/analytics';
 import ControlsComponent from '../components/controls/controls.jsx';
+import bleManager from '../robot/BluetoothManager';
+import Blockly from '../../../scratch-blocks-develop';
 // TODO 在该组件内再添加一个按钮用于发送lua脚本
 class Controls extends React.Component {
     constructor (props) {
@@ -55,6 +57,22 @@ class Controls extends React.Component {
             action: 'Stop Button'
         });
     }
+    handleSendLuaCodeClick (e) {
+        e.preventDefault();
+        const code = Blockly.Lua.workspaceToCode();
+        bleManager.send(code, () => {
+            console.log('发送成功');
+        }, () => {
+            console.log('发送失败');
+        });
+    }
+    handleStopSendLuaCodeClick (e) {
+        e.preventDefault();
+        bleManager.stop();
+    }
+    handleScanBLEClick (e) {
+        e.preventDefault();
+    }
     render () {
         const {
             vm, // eslint-disable-line no-unused-vars
@@ -66,7 +84,10 @@ class Controls extends React.Component {
                 active={this.state.projectRunning}
                 turbo={this.state.turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
+                onOpenBLEScan={this.handleScanBLEClick}
+                onSendLuaCode={this.handleSendLuaCodeClick}
                 onStopAllClick={this.handleStopAllClick}
+                onStopSnedLuaCode={this.handleStopSendLuaCodeClick}
             />
         );
     }

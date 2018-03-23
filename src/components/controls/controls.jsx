@@ -14,6 +14,9 @@ const Controls = function (props) {
         className,
         onGreenFlagClick,
         onStopAllClick,
+        onSendLuaCode,
+        onStopSnedLuaCode,
+        onOpenBLEScan,
         turbo,
         ...componentProps
     } = props;
@@ -30,6 +33,21 @@ const Controls = function (props) {
                 active={active}
                 onClick={onStopAllClick}
             />
+            <button
+                onClick={onSendLuaCode}
+            >
+                烧录脚本
+            </button>
+            <button
+                onClick={onStopSnedLuaCode}
+            >
+                停止
+            </button>
+            <button
+                onClick={onOpenBLEScan}
+            >
+                蓝牙
+            </button>
             {turbo ? (
                 <TurboMode />
             ) : null}
@@ -41,7 +59,10 @@ Controls.propTypes = {
     active: PropTypes.bool,
     className: PropTypes.string,
     onGreenFlagClick: PropTypes.func.isRequired,
+    onOpenBLEScan: PropTypes.func.isRequired,
+    onSendLuaCode: PropTypes.func.isRequired,
     onStopAllClick: PropTypes.func.isRequired,
+    onStopSnedLuaCode: PropTypes.func.isRequired,
     turbo: PropTypes.bool
 };
 
