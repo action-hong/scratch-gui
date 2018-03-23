@@ -2,7 +2,7 @@ import React from 'react';
 import BLEManager from '../robot/BluetoothManager';
 import Robot from '../robot/Robot';
 import BLEConfig from '../robot/BluetoothConfig';
-import BLEItem from '../components/robot/BLEItem';
+import BLEItem from '../components/robot/BLEItem.jsx';
 // 生成当前所有蓝牙设备的数据
 const generateDevices = () => BLEManager.getArray().map(robot => ({
     id: robot.id,
@@ -19,9 +19,14 @@ class BLEContainer extends React.Component {
             devices: generateDevices(),
             scaning: false
         };
+
+        this.handleStartScan = this.handleStartScan.bind(this);
+        this.handleStoptScan = this.handleStoptScan.bind(this);
+        this.handleBLEClick = this.handleBLEClick.bind(this);
+        this.handleBLEConnect = this.handleBLEConnect.bind(this);
     }
 
-    startScan () {
+    handleStartScan () {
         if (this.state.scaning) {
             return;
         }
@@ -65,7 +70,7 @@ class BLEContainer extends React.Component {
 
     }
 
-    stopScan () {
+    handleStoptScan () {
         if (!this.state.scaning) {
             return;
         }
@@ -94,7 +99,7 @@ class BLEContainer extends React.Component {
         e.preventDefault();
         const robot = Robots.get(id);
         this.handleStateChange(id, 1);
-        robot.perform(_ => {
+        robot.perform(() => {
             // 连接成功了
             this.handleStateChange(id, 2);
         }, () => {
@@ -126,12 +131,12 @@ class BLEContainer extends React.Component {
             <div>
                 {devices}
                 <button
-                    onClick={() => this.startScan()}
+                    onClick={this.handleStartScan}
                 >
           扫描
                 </button>
                 <button
-                    onClick={() => this.stopScan()}
+                    onClick={this.handleStoptScan}
                 >
           停止扫描
                 </button>

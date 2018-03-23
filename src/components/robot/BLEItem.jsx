@@ -1,35 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const BLEItem = function (props) {
-    const {
-        id,
-        name,
-        state,
-        onHandleClick,
-        onHandleDivClick
-    } = props;
 
-    let content = '连接';
-    if (state === 1) {
-        content = '连接中';
-    } else if (state === 2) {
-        content = '断开';
+class BLEItem extends React.Component {
+  
+    constructor (props) {
+        super(props);
+        this.handleBtnClick = this.handleBtnClick.bind(this);
+        this.handleDivClick = this.handleDivClick.bind(this);
     }
 
-    return (
-        <div
-            onClick={e => onHandleDivClick(e, id)}
-        >
-            <span>{id}  </span>
-            <span>{name}  </span>
-            <button
-                onClick={e => onHandleClick(e, id)}
+    handleBtnClick (e) {
+        this.props.onHandleClick(e, this.props.id);
+    }
+
+    handleDivClick (e) {
+        this.props.onHandleDivClick(e, this.props.id);
+    }
+
+    render () {
+        const {
+            id,
+            name,
+            state
+        } = this.props;
+
+        let content = '连接';
+        if (state === 1) {
+            content = '连接中';
+        } else if (state === 2) {
+            content = '断开';
+        }
+
+        return (
+            <div
+                onClick={this.handleDivClick}
             >
-                {content}
-            </button>
-        </div>
-    );
-};
+                <span>{id}  </span>
+                <span>{name}  </span>
+                <button
+                    onClick={this.handleBtnClick}
+                >
+                    {content}
+                </button>
+            </div>
+        );
+    }
+}
 
 BLEItem.propTypes = {
     id: PropTypes.bool,
