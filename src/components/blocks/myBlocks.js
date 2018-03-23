@@ -3,6 +3,7 @@
  */
 
 require('./BlocklyLua');
+require('./polyfill');
 require('./BlocklyLanguage');
 
 export default `<xml id="toolbox-categories" style="display: none">
@@ -678,4 +679,3 @@ export default `<xml id="toolbox-categories" style="display: none">
     <block type="extension_music_reporter" id="extension_music_reporter"></block>
   </category>
   </xml>;`;
-

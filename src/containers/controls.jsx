@@ -5,7 +5,7 @@ import VM from 'scratch-vm';
 
 import analytics from '../lib/analytics';
 import ControlsComponent from '../components/controls/controls.jsx';
-
+// TODO 在该组件内再添加一个按钮用于发送lua脚本
 class Controls extends React.Component {
     constructor (props) {
         super(props);
