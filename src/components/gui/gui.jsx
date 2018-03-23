@@ -26,6 +26,7 @@ import layout from '../../lib/layout-constants.js';
 import styles from './gui.css';
 import addExtensionIcon from './icon--extensions.svg';
 import LuaToolboxXml from '../blocks/myBlocks.js';
+import BLEContainer from '../../components/robot/ble-container.jsx';
 const addExtensionMessage = (
     <FormattedMessage
         defaultMessage="Extensions"
@@ -37,6 +38,7 @@ const addExtensionMessage = (
 const GUIComponent = props => {
     const {
         basePath,
+        blEContainerVisiable,
         children,
         enableExtensions,
         feedbackFormVisible,
@@ -73,6 +75,9 @@ const GUIComponent = props => {
         >
             {previewInfoVisible ? (
                 <PreviewModal />
+            ) : null}
+            {blEContainerVisiable ? (
+                <BLEContainer />
             ) : null}
             {feedbackFormVisible ? (
                 <FeedbackForm />
@@ -159,6 +164,7 @@ const GUIComponent = props => {
 };
 GUIComponent.propTypes = {
     basePath: PropTypes.string,
+    blEContainerVisiable: PropTypes.bool,
     children: PropTypes.node,
     enableExtensions: PropTypes.bool,
     feedbackFormVisible: PropTypes.bool,

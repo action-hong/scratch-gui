@@ -1,8 +1,18 @@
 import React from 'react';
-import BLEManager from '../robot/BluetoothManager';
-import Robot from '../robot/Robot';
-import BLEConfig from '../robot/BluetoothConfig';
-import BLEItem from '../components/robot/BLEItem.jsx';
+import BLEManager from '../../robot/BluetoothManager';
+import Robot from '../../robot/Robot';
+import BLEConfig from '../../robot/BluetoothConfig';
+import BLEItem from './BLEItem.jsx';
+import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
+import styles from './ble.css';
+import Box from '../box/box.jsx';
+
+import {connect} from 'react-redux';
+
+import {
+    closeBLE
+} from '../../reducers/modals';
 // 生成当前所有蓝牙设备的数据
 const generateDevices = () => BLEManager.getArray().map(robot => ({
     id: robot.id,
@@ -116,7 +126,7 @@ class BLEContainer extends React.Component {
 
     render () {
 
-        const devices = this.states.devices.map(device => (
+        const devices = this.state.devices.map(device => (
             <BLEItem
                 id={device.id}
                 key={device.id}
@@ -128,21 +138,53 @@ class BLEContainer extends React.Component {
         ));
 
         return (
-            <div>
-                {devices}
-                <button
-                    onClick={this.handleStartScan}
-                >
-          扫描
-                </button>
-                <button
-                    onClick={this.handleStoptScan}
-                >
-          停止扫描
-                </button>
-            </div>
+            <ReactModal
+                isOpen
+                className={styles.modalContent}
+                overlayClassName={styles.modalOverlay}
+            >
+                <Box className={styles.body}>
+                    {devices}
+                </Box>
+
+                <Box className={styles.buttonRow}>
+                    <button
+                        className={styles.noButton}
+                        onClick={this.handleStartScan}
+                    >
+                         扫描
+                    </button>
+                    <button
+                        className={styles.noButton}
+                        onClick={this.handleStoptScan}
+                    >
+                        停止扫描
+                    </button>
+                    <button
+                        className={styles.noButton}
+                        onClick={this.props.onCloseBLE}
+                    >
+                        关闭
+                    </button>
+                </Box>
+            </ReactModal>
         );
     }
 }
 
-export default BLEContainer;
+BLEContainer.propTypes = {
+    onCloseBLE: PropTypes.func
+};
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+    onCloseBLE: () => {
+        dispatch(closeBLE());
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BLEContainer);

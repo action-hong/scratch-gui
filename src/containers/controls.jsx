@@ -1,12 +1,16 @@
 import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {connect} from 'react-redux';
 import VM from 'scratch-vm';
 
 import analytics from '../lib/analytics';
 import ControlsComponent from '../components/controls/controls.jsx';
 import bleManager from '../robot/BluetoothManager';
 import Blockly from '../../../scratch-blocks-develop';
+
+import {openBLE} from '../reducers/modals';
+
 // TODO 在该组件内再添加一个按钮用于发送lua脚本
 class Controls extends React.Component {
     constructor (props) {
@@ -70,9 +74,6 @@ class Controls extends React.Component {
         e.preventDefault();
         bleManager.stop();
     }
-    handleScanBLEClick (e) {
-        e.preventDefault();
-    }
     render () {
         const {
             vm, // eslint-disable-line no-unused-vars
@@ -84,7 +85,7 @@ class Controls extends React.Component {
                 active={this.state.projectRunning}
                 turbo={this.state.turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
-                onOpenBLEScan={this.handleScanBLEClick}
+                onOpenBLEScan={this.props.onBLEOpen}
                 onSendLuaCode={this.handleSendLuaCodeClick}
                 onStopAllClick={this.handleStopAllClick}
                 onStopSnedLuaCode={this.handleStopSendLuaCodeClick}
@@ -94,7 +95,19 @@ class Controls extends React.Component {
 }
 
 Controls.propTypes = {
+    onBLEOpen: PropTypes.func.isRequired,
     vm: PropTypes.instanceOf(VM)
 };
 
-export default Controls;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+    onBLEOpen: () => {
+        dispatch(openBLE());
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Controls);

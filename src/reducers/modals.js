@@ -11,7 +11,7 @@ const MODAL_PREVIEW_INFO = 'previewInfo';
 const MODAL_SOUND_LIBRARY = 'soundLibrary';
 const MODAL_SPRITE_LIBRARY = 'spriteLibrary';
 const MODAL_SOUND_RECORDER = 'soundRecorder';
-
+const MODAL_BLE_SHOW = 'bleShow';
 
 const initialState = {
     [MODAL_BACKDROP_LIBRARY]: false,
@@ -21,7 +21,8 @@ const initialState = {
     [MODAL_PREVIEW_INFO]: true,
     [MODAL_SOUND_LIBRARY]: false,
     [MODAL_SPRITE_LIBRARY]: false,
-    [MODAL_SOUND_RECORDER]: false
+    [MODAL_SOUND_RECORDER]: false,
+    [MODAL_BLE_SHOW]: false
 };
 
 const reducer = function (state, action) {
@@ -67,6 +68,12 @@ const openFeedbackForm = function () {
     analytics.pageview('/modals/feedback');
     return openModal(MODAL_FEEDBACK_FORM);
 };
+
+const openBLE = function () {
+    analytics.pageview('/modals/ble');
+    return openModal(MODAL_BLE_SHOW);
+};
+
 const openSoundLibrary = function () {
     analytics.pageview('/libraries/sounds');
     return openModal(MODAL_SOUND_LIBRARY);
@@ -95,6 +102,11 @@ const closeExtensionLibrary = function () {
 const closeFeedbackForm = function () {
     return closeModal(MODAL_FEEDBACK_FORM);
 };
+
+const closeBLE = function () {
+    return closeModal(MODAL_BLE_SHOW);
+};
+
 const closePreviewInfo = function () {
     return closeModal(MODAL_PREVIEW_INFO);
 };
@@ -114,6 +126,7 @@ export {
     openExtensionLibrary,
     openFeedbackForm,
     openPreviewInfo,
+    openBLE,
     openSoundLibrary,
     openSpriteLibrary,
     openSoundRecorder,
@@ -121,6 +134,7 @@ export {
     closeCostumeLibrary,
     closeExtensionLibrary,
     closeFeedbackForm,
+    closeBLE,
     closePreviewInfo,
     closeSpriteLibrary,
     closeSoundLibrary,
