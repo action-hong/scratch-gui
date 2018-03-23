@@ -33,7 +33,7 @@ class Robot {
     /**
    * 断开
    */
-    disconnect () {
+    disconnect (callback) {
     // eslint-disable-next-line no-undef
         this.readService && ble.stopNotification(this.id, this.readService, this.readCharacteristic, () => {
             console.log(`取消监听: ${this.id}`);
@@ -42,6 +42,7 @@ class Robot {
         });
         // eslint-disable-next-line no-undef
         ble.disconnect(this.id, () => {
+            callback && callback();
             this.disconnectCallback();
         });
     }
@@ -58,7 +59,7 @@ class Robot {
         if (s === config.BLE_DISCONNECT) {
             this.connect(connect, disconnect);
         } else if (s === config.BLE_CONNECTED || s === config.BLE_CONNECTING) {
-            this.disconnect(connect);
+            this.disconnect(disconnect);
         } else {
             console.error(`state only be 0,1,2 ${s} is invalid value`);
         }
