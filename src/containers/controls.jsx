@@ -63,7 +63,8 @@ class Controls extends React.Component {
     }
     handleSendLuaCodeClick (e) {
         e.preventDefault();
-        const code = Blockly.Lua.workspaceToCode();
+        const code = `--\n${Blockly.Lua.workspaceToCode()}--`;
+        console.log(code);
         bleManager.send(code, () => {
             console.log('发送成功');
         }, () => {
@@ -95,11 +96,15 @@ class Controls extends React.Component {
 }
 
 Controls.propTypes = {
+    // 可以该值来判断如何运行当前的blockly
+    currentBlocklyMode: PropTypes.string,
     onBLEOpen: PropTypes.func.isRequired,
     vm: PropTypes.instanceOf(VM)
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+    currentBlocklyMode: state.toolbox.toolboxMode
+});
 
 const mapDispatchToProps = dispatch => ({
     onBLEOpen: () => {
