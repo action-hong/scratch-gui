@@ -48,11 +48,11 @@ class BLEItem extends React.Component {
 }
 
 BLEItem.propTypes = {
-    id: PropTypes.bool,
+    id: PropTypes.string,
     name: PropTypes.string,
     onHandleClick: PropTypes.func.isRequired,
     onHandleDivClick: PropTypes.func.isRequired,
-    state: PropTypes.func.isRequired
+    state: PropTypes.number
 };
 
 export default BLEItem;

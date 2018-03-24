@@ -20,7 +20,7 @@ const generateDevices = () => BLEManager.getArray().map(robot => ({
     state: robot.state
 }));
 
-const Robots = new Map();
+const ROBOTS = new Map();
 
 class BLEContainer extends React.Component {
     constructor (props) {
@@ -34,6 +34,7 @@ class BLEContainer extends React.Component {
         this.handleStoptScan = this.handleStoptScan.bind(this);
         this.handleBLEClick = this.handleBLEClick.bind(this);
         this.handleBLEConnect = this.handleBLEConnect.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
     handleStartScan () {
@@ -64,9 +65,13 @@ class BLEContainer extends React.Component {
                 return;
             }
 
-            Robots.set(device.id, new Robot(device));
+            // const newDevices = generateDevices();
 
-            const newDevices = generateDevices();
+            // BLEManager.devices.set(device.id, new Robot(device));
+
+            const newDevices = this.state.devices.slice(0, this.state.devices.length);
+
+            ROBOTS.set(id, new Robot(device));
 
             this.setState({
                 devices: newDevices.concat({
@@ -85,15 +90,17 @@ class BLEContainer extends React.Component {
             return;
         }
 
-        const devices = generateDevices();
+        const devices = this.state.devices.slice(0, this.state.devices.length);
         this.setState({
             devices,
             scaning: false
         });
+
+        BLEManager.stopScan();
     }
 
     handleStateChange (id, state) {
-        const devices = generateDevices();
+        const devices = this.state.devices.slice(0, this.state.devices.length);
 
         const device = devices.filter(val => val.id === id)[0];
 
@@ -107,7 +114,7 @@ class BLEContainer extends React.Component {
 
     handleBLEConnect (e, id) {
         e.preventDefault();
-        const robot = Robots.get(id);
+        const robot = ROBOTS.get(id);
         this.handleStateChange(id, 1);
         robot.perform(() => {
             // 连接成功了
@@ -120,8 +127,13 @@ class BLEContainer extends React.Component {
 
     handleBLEClick (e, id) {
         e.preventDefault();
-        const robot = Robot.get(id);
+        const robot = ROBOTS.get(id);
         robot.write(BLEConfig.COLOR_CMDS[Math.floor(Math.random() * 5)]);
+    }
+
+    handleCloseModal () {
+        this.handleStoptScan();
+        this.props.onCloseBLE();
     }
 
     render () {
@@ -162,7 +174,7 @@ class BLEContainer extends React.Component {
                     </button>
                     <button
                         className={styles.noButton}
-                        onClick={this.props.onCloseBLE}
+                        onClick={this.handleCloseModal}
                     >
                         关闭
                     </button>
