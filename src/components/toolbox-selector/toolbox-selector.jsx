@@ -6,6 +6,8 @@ import Box from '../box/box.jsx';
 import languageIcon from './language-icon.svg';
 import styles from './language-selector.css';
 
+import toolboxs from '../blocks/toolbox';
+
 const ToolboxSelector = ({
     currentToolboxMode,
     onChange,
@@ -23,7 +25,7 @@ const ToolboxSelector = ({
                 value={currentToolboxMode}
                 onChange={onChange}
             >
-                {['normal', 'lua'].map(val => (
+                {Object.keys(toolboxs).map(val => (
                     <option
                         key={val}
                         value={val}

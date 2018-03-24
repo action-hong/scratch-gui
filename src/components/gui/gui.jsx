@@ -25,7 +25,7 @@ import WebGlModal from '../../containers/webgl-modal.jsx';
 import layout from '../../lib/layout-constants.js';
 import styles from './gui.css';
 import addExtensionIcon from './icon--extensions.svg';
-import LuaToolboxXml from '../blocks/myBlocks.js';
+
 import BLEContainer from '../../components/robot/ble-container.jsx';
 const addExtensionMessage = (
     <FormattedMessage
@@ -109,7 +109,6 @@ const GUIComponent = props => {
                                         options={{
                                             media: `${basePath}static/blocks-media/`
                                         }}
-                                        toolboxXML={LuaToolboxXml}
                                         vm={vm}
                                     />
                                 </Box>

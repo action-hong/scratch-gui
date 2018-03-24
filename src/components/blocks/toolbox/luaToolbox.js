@@ -1,11 +1,3 @@
-/**
- * Created by kkopite on 2017/8/23.
- */
-
-require('./BlocklyLua');
-require('./polyfill');
-require('./BlocklyLanguage');
-
 export default `<xml id="toolbox-categories" style="display: none">
 <category name="robot" colour="#4C97FF" secondaryColour="#3373CC">
 <block type="blockly_io_write"></block>
