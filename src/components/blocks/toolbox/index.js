@@ -3,6 +3,7 @@
  */
 
 require('../BlocklyLua');
+require('../BlocklyArduino');
 require('../polyfill');
 require('../BlocklyLanguage');
 

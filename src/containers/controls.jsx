@@ -19,7 +19,9 @@ class Controls extends React.Component {
             'handleGreenFlagClick',
             'handleStopAllClick',
             'onProjectRunStart',
-            'onProjectRunStop'
+            'onProjectRunStop',
+            'handleSendLuaCodeClick',
+            'handleStopSendLuaCodeClick'
         ]);
         this.state = {
             projectRunning: false,
@@ -63,6 +65,10 @@ class Controls extends React.Component {
     }
     handleSendLuaCodeClick (e) {
         e.preventDefault();
+        if (this.props.currentBlocklyMode !== 'lua') {
+            console.log(`当前模式是: ${this.props.currentBlocklyMode}`);
+            return;
+        }
         const code = `--\n${Blockly.Lua.workspaceToCode()}--`;
         console.log(code);
         bleManager.send(code, () => {

@@ -2,6 +2,15 @@ const categorySeparator = '<sep gap="36"/>';
 
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
+const robot = function () {
+    return `
+    <category name="arduino" colour="#4C97FF" secondaryColour="#3373CC">
+        <block type="blockly_arduino_led"></block>
+        ${blockSeparator}
+        <block type="blockly_arduino_servo"></block>
+    </category>`;
+};
+
 const motion = function (isStage, targetId) {
     return `
     <category name="Motion" colour="#4C97FF" secondaryColour="#3373CC">
@@ -669,6 +678,7 @@ const makeToolboxXML = function (isStage, targetId, categoriesXML) {
 
     const everything = [
         xmlOpen,
+        robot(isStage, targetId), gap,
         motion(isStage, targetId), gap,
         looks(isStage, targetId), gap,
         sound(isStage, targetId), gap,

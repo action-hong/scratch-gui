@@ -29,8 +29,10 @@ module.exports = {
         filename: '[name].js'
     },
     externals: {
-        React: 'react',
-        ReactDOM: 'react-dom'
+        'React': 'react',
+        'ReactDOM': 'react-dom',
+        'johnny-five': 'window.five',
+        'jonhhy-five-board': 'window.jonhhyFiveBoard'
     },
     module: {
         rules: [{

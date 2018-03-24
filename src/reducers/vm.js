@@ -1,8 +1,10 @@
 import VM from 'scratch-vm';
 import storage from '../lib/storage';
 
+import Scratch3Inject from '../components/blocks/blockly-inject';
+
 const SET_VM = 'scratch-gui/vm/SET_VM';
-const defaultVM = new VM();
+const defaultVM = new VM(Scratch3Inject);
 defaultVM.attachStorage(storage);
 const initialState = defaultVM;
 

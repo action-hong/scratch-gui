@@ -1,0 +1,7 @@
+- [ ] 修复webpack配置中`externels`无法实现cong`global`获取`five`和`five-board`
+- [ ] 修复一些莫名其妙的警告(蓝牙界面打开以及当前toolbox的mode)
+- [ ] 不是用`require`引入, 全部使用`import`
+- [ ] 兼容以往那些`js`配置
+- [ ] 中英文适配
+- [ ] 将`Blockly`的自定义模块放在`Scratch-Blockly`去
+- [ ] 考虑是否将新增模块(`arduino`)的具体方法执行放在`scratch-vm`, 而不是通过注册进去

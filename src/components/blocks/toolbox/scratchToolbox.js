@@ -1,4 +1,8 @@
 export default '<xml id="toolbox-categories" style="display: none">' +
+  `<category name="arduino" colour="#4C97FF" secondaryColour="#3373CC">
+          <block type="blockly_arduino_led"></block>
+          <block type="blockly_arduino_servo"></block>
+  </category>` +
   '<category name="Motion" colour="#4C97FF" secondaryColour="#3373CC">' +
     '<block type="motion_movesteps" id="motion_movesteps">' +
       '<value name="STEPS">' +
