@@ -4,6 +4,26 @@ export default '<xml id="toolbox-categories" style="display: none">' +
           <block type="blockly_arduino_servo"></block>
           <block type="blockly_arduino_pin"></block>
           <block type="blockly_arduino_sensor"></block>
+          <block type="blockly_arduino_pin_read"></block>
+          <block type="blockly_arduino_digist_write"></block>
+          <block type="blockly_arduino_digist_read"></block>
+          <block type="blockly_arduino_rgb">
+            <value name="blockly_arduino_red">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+            <value name="blockly_arduino_green">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+            <value name="blockly_arduino_blue">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+          </block>
   </category>` +
   '<category name="Motion" colour="#4C97FF" secondaryColour="#3373CC">' +
     '<block type="motion_movesteps" id="motion_movesteps">' +

@@ -28,8 +28,12 @@ class Scratch3ArduinolBlocks {
         return {
             blockly_arduino_led: this.arduinoLed,
             blockly_arduino_servo: this.arduinoServo,
-            blockly_arduino_pin: this.arduinoPin,
-            blockly_arduino_sensor: this.arduinoSensor
+            blockly_arduino_pin: this.arduinoPinWrite,
+            blockly_arduino_pin_read: this.arduinoPinRead,
+            blockly_arduino_digist_write: this.arduinoDigistWrite,
+            blockly_arduino_digist_read: this.arduinoDigistRead,
+            blockly_arduino_sensor: this.arduinoSensor,
+            blockly_arduino_rgb: this.arduinoLedRGB
         };
     }
 
@@ -74,7 +78,7 @@ class Scratch3ArduinolBlocks {
         servo.to(angle);
     }
 
-    arduinoPin (args, util) {
+    arduinoPinWrite (args, util) {
         const number = Number(args.blockly_pin_number);
         const val = Number(args.blockly_arduino_pin_state);
         if (!five) {
@@ -86,6 +90,28 @@ class Scratch3ArduinolBlocks {
         })
 
         pin.write(val)
+    }
+
+    arduinoPinRead (args, util) {
+        const number = Number(args.blockly_pin_number);
+        const val = Number(args.blockly_arduino_pin_state);
+        if (!five) {
+            return;
+        }
+        const pin = new five.Pin({
+            pin: number,
+            board
+        })
+
+        return new Promise((resolve, reject) => {
+            pin.read((err, val) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(val)
+                }
+            })
+        });
     }
 
     arduinoSensor (args, util) {
@@ -102,6 +128,45 @@ class Scratch3ArduinolBlocks {
         // return new Promise((resolve, reject) => {
         //     resolve(1)
         // });
+    }
+
+    arduinoLedRGB (args, util) {
+        let red = Number(args.blockly_arduino_red)
+        let green = Number(args.blockly_arduino_green)
+        let blue = Number(args.blockly_arduino_blue)
+
+        red = Math.min(255, Math.max(0, red))
+        green = Math.min(255, Math.max(0, green))
+        blue = Math.min(255, Math.max(0, blue))
+
+        const redNumber = args.blockly_arduino_red_number
+        const greenNumber = args.blockly_arduino_green_number
+        const blueNumber = args.blockly_arduino_blue_number
+
+        let rgb = new five.Led.RGB([redNumber, greenNumber, blueNumber])
+
+        let color = [red, green, blue].map(v => v.toString(16))
+                                      .map(v => v.length > 1 ? v : '0' + v)
+                                      .join('')
+
+        rgb.color(color)
+    }
+
+    arduinoDigistWrite (args, util) {
+        const number = Number(args.blockly_pin_number);
+        const val = Number(args.blockly_arduino_pin_state);
+
+        board.pinMode(number, five.Pin.OUTPUT);
+        board.digitalWrite(number, val);
+    }
+
+    arduinoDigistRead (args, util) {
+        const number = Number(args.blockly_pin_number);
+
+        board.pinMode(number, five.Pin.INPUT);
+        board.digitalRead(number, function(value) {
+            resolve(value)
+        });
     }
 }
 
