@@ -8,6 +8,10 @@ const robot = function () {
         <block type="blockly_arduino_led"></block>
         ${blockSeparator}
         <block type="blockly_arduino_servo"></block>
+        ${blockSeparator}
+        <block type="blockly_arduino_pin"></block>
+        ${blockSeparator}
+        <block type="blockly_arduino_sensor"></block>
     </category>`;
 };
 

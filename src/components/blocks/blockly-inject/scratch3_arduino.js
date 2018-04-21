@@ -27,7 +27,9 @@ class Scratch3ArduinolBlocks {
     getPrimitives () {
         return {
             blockly_arduino_led: this.arduinoLed,
-            blockly_arduino_servo: this.arduinoServo
+            blockly_arduino_servo: this.arduinoServo,
+            blockly_arduino_pin: this.arduinoPin,
+            blockly_arduino_sensor: this.arduinoSensor
         };
     }
 
@@ -70,6 +72,36 @@ class Scratch3ArduinolBlocks {
             board: board
         });
         servo.to(angle);
+    }
+
+    arduinoPin (args, util) {
+        const number = Number(args.blockly_pin_number);
+        const val = Number(args.blockly_arduino_pin_state);
+        if (!five) {
+            return;
+        }
+        const pin = new five.Pin({
+            pin: number,
+            board
+        })
+
+        pin.write(val)
+    }
+
+    arduinoSensor (args, util) {
+        const number = args.blockly_pin_number;
+        const sensor = new five.Sensor({
+            pin: number,
+            board
+        })
+        return new Promise((resolve, reject) => {
+            sensor.once('change', () => {
+                resolve(sensor.value)
+            })
+        });
+        // return new Promise((resolve, reject) => {
+        //     resolve(1)
+        // });
     }
 }
 
