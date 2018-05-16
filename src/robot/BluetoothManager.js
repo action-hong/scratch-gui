@@ -2,7 +2,7 @@
  * Created by PVer on 2017/8/10.
  */
 import config from './BluetoothConfig';
-
+import BLEDispatch from './BluetoothCallback';
 const BluetoothManager = {
     // 已连接的设备
     devices: new Map(),
@@ -10,7 +10,8 @@ const BluetoothManager = {
     callbacks: new Map(),
     // 至少有一个连接设备则为连接, 否则为断开
     state: config.BLE_DISCONNECT,
-
+    // 蓝牙返回信息处理
+    dispatch: new BLEDispatch(),
     isConnected () {
         return this.state === config.BLE_CONNECTED;
     },
@@ -40,6 +41,11 @@ const BluetoothManager = {
         for (const c of this.callbacks.values()) {
             c && c(deviceId, data);
         }
+        this.dispatch.onReceive(deviceId, data);
+    },
+    // 回调后自动取消注册, 类似once
+    registerRec (key, callback) {
+        this.dispatch.once(key, callback);
     },
     register (key, callback) {
         this.callbacks.set(key, callback);
@@ -65,6 +71,8 @@ const BluetoothManager = {
                 callback.success();
             }, () => {
                 callback.failure();
+                // 发送失败, 那就清空callback
+                this.dispatch.clear();
             });
         }
     },

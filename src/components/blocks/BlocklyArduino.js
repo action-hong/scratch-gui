@@ -9,82 +9,20 @@ Blockly.defineBlocksWithJsonArray([
                 type: 'field_dropdown',
                 name: 'blockly_pin_number',
                 options: [
-                    [
-                        '0',
-                        '0'
-                    ],
-                    [
-                        '1',
-                        '1'
-                    ],
-                    [
-                        '2',
-                        '2'
-                    ],
-                    [
-                        '3',
-                        '3'
-                    ],
-                    [
-                        '4',
-                        '4'
-                    ],
-                    [
-                        '5',
-                        '5'
-                    ],
-                    [
-                        '6',
-                        '6'
-                    ],
-                    [
-                        '7',
-                        '7'
-                    ],
-                    [
-                        '8',
-                        '8'
-                    ],
-                    [
-                        '9',
-                        '9'
-                    ],
-                    [
-                        '10',
-                        '10'
-                    ],
-                    [
-                        '11',
-                        '11'
-                    ],
-                    [
-                        '12',
-                        '12'
-                    ],
-                    [
-                        '13',
-                        '13'
-                    ],
-                    [
-                        'A1',
-                        'A1'
-                    ],
-                    [
-                        'A2',
-                        'A2'
-                    ],
-                    [
-                        'A3',
-                        'A3'
-                    ],
-                    [
-                        'A4',
-                        'A4'
-                    ],
-                    [
-                        'A5',
-                        'A5'
-                    ]
+                    ['0','0'],
+                    ['1','1'],
+                    ['2','2'],
+                    ['3','3'],
+                    ['4','4'],
+                    ['5','5'],
+                    ['6','6'],
+                    ['7','7'],
+                    ['8','8'],
+                    ['9','9'],
+                    ['10','10'],
+                    ['11','11'],
+                    ['12','12'],
+                    ['13','13']
                 ]
             },
             {
@@ -117,50 +55,20 @@ Blockly.defineBlocksWithJsonArray([
                 type: 'field_dropdown',
                 name: 'blockly_pin_number',
                 options: [
-                    [
-                        '0',
-                        '0'
-                    ],
-                    [
-                        '1',
-                        '1'
-                    ],
-                    [
-                        '2',
-                        '2'
-                    ],
-                    [
-                        '3',
-                        '3'
-                    ],
-                    [
-                        '4',
-                        '4'
-                    ],
-                    [
-                        '5',
-                        '5'
-                    ],
-                    [
-                        '6',
-                        '6'
-                    ],
-                    [
-                        '7',
-                        '7'
-                    ],
-                    [
-                        '8',
-                        '8'
-                    ],
-                    [
-                        '9',
-                        '9'
-                    ],
-                    [
-                        '10',
-                        '10'
-                    ]
+                    ['0','0'],
+                    ['1','1'],
+                    ['2','2'],
+                    ['3','3'],
+                    ['4','4'],
+                    ['5','5'],
+                    ['6','6'],
+                    ['7','7'],
+                    ['8','8'],
+                    ['9','9'],
+                    ['10','10'],
+                    ['11','11'],
+                    ['12','12'],
+                    ['13','13']
                 ]
             },
             {
@@ -198,12 +106,16 @@ Blockly.defineBlocksWithJsonArray([
                     ['9','9'],
                     ['10','10'],
                     ['11','11'],
+                    ['12','12'],
+                    ['13','13'],
                     ['A0','A0'],
                     ['A1','A1'],
                     ['A2','A2'],
                     ['A3','A3'],
                     ['A4','A4'],
                     ['A5','A5'],
+                    ['A6','A6'],
+                    ['A7','A7'],
                 ]
             },
             {
@@ -248,12 +160,16 @@ Blockly.defineBlocksWithJsonArray([
                     ['9','9'],
                     ['10','10'],
                     ['11','11'],
+                    ['12','12'],
+                    ['13','13'],
                     ['A0','A0'],
                     ['A1','A1'],
                     ['A2','A2'],
                     ['A3','A3'],
                     ['A4','A4'],
                     ['A5','A5'],
+                    ['A6','A6'],
+                    ['A7','A7']
                 ]
             }
         ],
@@ -271,30 +187,12 @@ Blockly.defineBlocksWithJsonArray([
                 type: 'field_dropdown',
                 name: 'blockly_pin_number',
                 options: [
-                    [
-                        'A0',
-                        'A0'
-                    ],
-                    [
-                        'A1',
-                        'A1'
-                    ],
-                    [
-                        'A2',
-                        'A2'
-                    ],
-                    [
-                        'A3',
-                        'A3'
-                    ],
-                    [
-                        'A4',
-                        'A4'
-                    ],
-                    [
-                        'A5',
-                        'A5'
-                    ]
+                    ['A0','A0'],
+                    ['A1','A1'],
+                    ['A2','A2'],
+                    ['A3','A3'],
+                    ['A4','A4'],
+                    ['A5','A5'],
                 ]
             }
         ],
@@ -458,7 +356,94 @@ Blockly.defineBlocksWithJsonArray([
         tooltip: '',
         helpUrl: ''
     },
-    
+    {
+        type: 'blockly_arduino_ultrasonic_read',
+        message0: '超声波传感器(HCSR04) echo %1 ',
+        args0: [
+            {
+                type: 'field_dropdown',
+                name: 'blockly_pin_number',
+                options: [
+                    ['0','0'],
+                    ['1','1'],
+                    ['2','2'],
+                    ['3','3'],
+                    ['4','4'],
+                    ['5','5'],
+                    ['6','6'],
+                    ['7','7'],
+                    ['8','8'],
+                    ['9','9'],
+                    ['10','10'],
+                    ['11','11'],
+                    ['12','12'],
+                    ['13','13'],
+                ]
+            }
+        ],
+        inputsInline: true,
+        output: "Number",
+        colour: `%{BKY_ROBOT_HUE}`,
+        tooltip: '',
+        helpUrl: ''
+    },
+    {
+        type: 'blockly_arduino_analog_write',
+        message0: '向 %1 输出PWM波 %2',
+        args0: [
+            {
+                type: 'field_dropdown',
+                name: 'blockly_pin_number',
+                options: [
+                    ['3','3'],
+                    ['5','5'],
+                    ['6','6'],
+                    ['9','9'],
+                    ['10','10'],
+                    ['11','11'],
+                ]
+            },
+            {
+                type: "input_value",
+                name: 'blockly_arduino_pwm_val',
+                // 设置的话, 直接变量无法添加擦
+                // check: "Number",
+                min: 0,
+                max: 255
+            }
+        ],
+        inputsInline: true,
+        previousStatement: null,
+        nextStatement: null,
+        colour: `%{BKY_ROBOT_HUE}`,
+        tooltip: '',
+        helpUrl: ''
+    },
+    {
+        type: 'blockly_arduino_analog_read',
+        message0: '读取analog %1 ',
+        args0: [
+            {
+                type: 'field_dropdown',
+                name: 'blockly_pin_number',
+                options: [
+                    ['A0','A0'],
+                    ['A1','A1'],
+                    ['A2','A2'],
+                    ['A3','A3'],
+                    ['A4','A4'],
+                    ['A5','A5'],
+                    ['A6','A6'],
+                    ['A7','A7'],
+                ]
+            }
+        ],
+        inputsInline: true,
+        output: "Number",
+        colour: `%{BKY_ROBOT_HUE}`,
+        tooltip: '',
+        helpUrl: ''
+    },
 ]);
 
 Blockly.JavaScript.blockly_arduino_led = function (block) {

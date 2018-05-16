@@ -32,8 +32,11 @@ class Scratch3ArduinolBlocks {
             blockly_arduino_pin_read: this.arduinoPinRead,
             blockly_arduino_digist_write: this.arduinoDigistWrite,
             blockly_arduino_digist_read: this.arduinoDigistRead,
+            blockly_arduino_analog_write: this.arduinoAnalogWrite,
+            blockly_arduino_analog_read: this.arduinoAnalogRead,
             blockly_arduino_sensor: this.arduinoSensor,
-            blockly_arduino_rgb: this.arduinoLedRGB
+            blockly_arduino_rgb: this.arduinoLedRGB,
+            blockly_arduino_ultrasonic_read: this.arduinoUltrasonicRead
         };
     }
 
@@ -167,6 +170,42 @@ class Scratch3ArduinolBlocks {
         board.digitalRead(number, function(value) {
             resolve(value)
         });
+    }
+
+    arduinoAnalogWrite (args, util) {
+        const number = Number(args.blockly_pin_number);
+        let val = Number(args.blockly_arduino_pwm_val);
+
+        val = Math.min(255, Math.max(0, val))
+        // number必须是 PWM
+        board.pinMode(number, five.Pin.PWM);
+
+        // val的值 0 到 255
+        board.analogWrite(number, val);
+    }
+
+    arduinoAnalogRead (args, util) {
+        const number = Number(args.blockly_pin_number);
+
+        // number 为1 代表 接的是 A1
+        board.pinMode(number, five.Pin.ANALOG);
+
+        return new Promise((resolve, reject) => {
+            board.analogRead(number, function(voltage) {
+                resolve(voltage);
+            });
+        });
+    }
+
+
+
+    arduinoUltrasonicRead (args, util) {
+        const number = Number(args.blockly_pin_number);
+        const proximity = new five.Proximity({
+            controller: "HCSR04",
+            pin: number
+          });
+        return proximity.centimeters
     }
 }
 

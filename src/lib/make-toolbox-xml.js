@@ -2,9 +2,29 @@ const categorySeparator = '<sep gap="36"/>';
 
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
+// import scratchToolbox from '../components/blocks/toolbox/scratchToolbox';
+
 const robot = function () {
     return `
     <category name="arduino" colour="#4C97FF" secondaryColour="#3373CC">
+        <block type="blockly_io_bee"></block>
+        <block type="blockly_io_show_number">
+            <value name="blockly_io_show_number">
+            <shadow type="math_number">
+                <field name="NUM">6666</field>
+            </shadow>
+            </value>
+        </block>
+        <block type="blockly_io_send_infrared_msg"></block>
+        <block type="blockly_io_key"></block>
+        <block type="blockly_io_read_temp"></block>
+        <block type="blockly_io_read_u1tra"></block>
+        <block type="blockly_io_read_humi"></block>
+        <block type="blockly_io_read_infrared"></block>
+        <block type="blockly_io_read_voice"></block>
+        <block type="blockly_io_read_rgb"></block>
+        <block type="blockly_io_read_light"></block>
+        <block type="blockly_io_read_patrol_js"></block>
         <block type="blockly_arduino_led"></block>
         ${blockSeparator}
         <block type="blockly_arduino_servo"></block>
@@ -12,9 +32,18 @@ const robot = function () {
         <block type="blockly_arduino_pin"></block>
         ${blockSeparator}
         <block type="blockly_arduino_sensor"></block>
+        <block type="blockly_arduino_ultrasonic_read"></block>
         <block type="blockly_arduino_pin_read"></block>
         <block type="blockly_arduino_digist_write"></block>
         <block type="blockly_arduino_digist_read"></block>
+        <block type="blockly_arduino_analog_write">
+            <value name="blockly_arduino_pwm_val">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="blockly_arduino_analog_read"></block>
         <block type="blockly_arduino_rgb">
             <value name="blockly_arduino_red">
                 <shadow type="math_number">
@@ -32,6 +61,7 @@ const robot = function () {
                 </shadow>
             </value>
         </block>
+        
         
     </category>`;
 };
@@ -721,6 +751,9 @@ const makeToolboxXML = function (isStage, targetId, categoriesXML) {
 
     everything.push(xmlClose);
     return everything.join('\n');
+
+    // 直接返回自己的默认toolbox
+    // return scratchToolbox;
 };
 
 export default makeToolboxXML;

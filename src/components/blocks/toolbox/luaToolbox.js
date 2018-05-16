@@ -16,7 +16,7 @@ export default `<xml id="toolbox-categories" style="display: none">
 <block type="blockly_io_tube_all">
   <value name="blockly_io_tube_data">
     <shadow type="math_number">
-      <field name="NUM">1</field>
+      <field name="NUM">666</field>
     </shadow>
   </value>
 </block>
@@ -35,10 +35,32 @@ export default `<xml id="toolbox-categories" style="display: none">
     </shadow>
   </value>
 </block>
-<block type="blockly_io_uart_rec"></block>
 <block type="blockly_io_bee"></block>
-<block type="blockly_io_read_action"></block>
+<block type="blockly_io_read_pose"></block>
+<block type="blockly_io_play_pose"></block>
 <block type="blockly_io_play_action"></block>
+<block type="blockly_io_save_action"></block>
+<block type="blockly_io_init_infrared"></block>
+<block type="blockly_io_read_infrared"></block>
+<block type="blockly_io_read_voice"></block>
+<block type="blockly_io_init_read_rgb"></block>
+<block type="blockly_io_read_rgb"></block>
+<block type="blockly_io_init_light"></block>
+<block type="blockly_io_read_light"></block>
+<block type="blockly_io_read_patrol"></block>
+<block type="blockly_io_read_array"></block>
+<block type="blockly_io_stroke_str">
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="NUM">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
 </category>
   <category name="Control" colour="#FFAB19" secondaryColour="#CF8B17">
     <block type="control_wait" id="control_wait">
