@@ -38,8 +38,6 @@ export default `<xml id="toolbox-categories" style="display: none">
 <block type="blockly_io_bee"></block>
 <block type="blockly_io_read_pose"></block>
 <block type="blockly_io_play_pose"></block>
-<block type="blockly_io_play_action"></block>
-<block type="blockly_io_save_action"></block>
 <block type="blockly_io_init_infrared"></block>
 <block type="blockly_io_read_infrared"></block>
 <block type="blockly_io_read_voice"></block>
