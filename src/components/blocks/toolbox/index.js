@@ -11,6 +11,6 @@ import scratchToolbox from './scratchToolbox';
 import luaToolbox from './luaToolbox';
 
 export default {
-    normal: scratchToolbox,
+    iKern: scratchToolbox,
     lua: luaToolbox
 };

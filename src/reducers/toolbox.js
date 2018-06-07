@@ -5,7 +5,7 @@ import makeToolboxXML from '../lib/make-toolbox-xml';
 const initialState = {
     toolboxXML: makeToolboxXML(true),
     // 用于判断当前处于什么状态(lua脚本的还是正常的scratch)
-    toolboxMode: 'normal'
+    toolboxMode: 'iKern'
 };
 
 const reducer = function (state, action) {
