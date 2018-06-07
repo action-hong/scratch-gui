@@ -1,6 +1,5 @@
 export default '<xml id="toolbox-categories" style="display: none">' +
   `<category name="robot" colour="#4C97FF" secondaryColour="#3373CC">
-          <block type="blockly_io_bee"></block>
           <block type="blockly_io_show_number">
             <value name="blockly_io_show_number">
               <shadow type="math_number">
@@ -8,7 +7,7 @@ export default '<xml id="toolbox-categories" style="display: none">' +
               </shadow>
             </value>
           </block>
-          <block type="blockly_io_send_infrared_msg"></block>
+          <block type="blockly_io_bee"></block>
           <block type="blockly_io_key"></block>
           <block type="blockly_io_read_temp"></block>
           <block type="blockly_io_read_u1tra"></block>
@@ -17,7 +16,8 @@ export default '<xml id="toolbox-categories" style="display: none">' +
           <block type="blockly_io_read_voice"></block>
           <block type="blockly_io_read_rgb"></block>
           <block type="blockly_io_read_light"></block>
-          <block type="blockly_io_read_patrol_js"></block>
+          <block type="blockly_io_read_patrol"></block>
+          <sep gap="36"/>
           <block type="blockly_arduino_led"></block>
           <block type="blockly_arduino_servo"></block>
           <block type="blockly_arduino_pin"></block>

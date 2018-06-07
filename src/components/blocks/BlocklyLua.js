@@ -7,7 +7,7 @@ import Blockly from '../../../../scratch-blocks-develop';
 Blockly.defineBlocksWithJsonArray([
     {
         type: 'blockly_io_write',
-        message0: '信号输出 端口 %1 %2 的第 %3 个脚设置为 %4',
+        message0: '信号输出 端口 %1 的第 %2 个脚设置为 %3',
         args0: [
             {
                 type: 'field_dropdown',
@@ -30,9 +30,6 @@ Blockly.defineBlocksWithJsonArray([
                         '4'
                     ]
                 ]
-            },
-            {
-                type: 'input_dummy'
             },
             {
                 type: 'field_dropdown',
@@ -70,7 +67,7 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: 'blockly_io_read',
-        message0: '信号输入 端口 %1 %2 的第 %3 个脚的状态',
+        message0: '信号输入 端口 %1 的第 %2 个脚的状态',
         args0: [
             {
                 type: 'field_dropdown',
@@ -93,9 +90,6 @@ Blockly.defineBlocksWithJsonArray([
                         '4'
                     ]
                 ]
-            },
-            {
-                type: 'input_dummy'
             },
             {
                 type: 'field_dropdown',
@@ -127,11 +121,8 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: 'blockly_io_delayms',
-        message0: '延时 %1 %2 毫秒',
+        message0: '延时 %1 秒',
         args0: [
-            {
-                type: 'input_dummy'
-            },
             {
                 type: 'input_value',
                 name: 'blockly_io_delay_time',
@@ -228,7 +219,7 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: 'blockly_io_tube_all',
-        message0: '数码管 端口 %1 显示 %2 %3',
+        message0: '数码管 端口 %1 显示 %2',
         args0: [
             {
                 type: 'field_dropdown',
@@ -261,9 +252,6 @@ Blockly.defineBlocksWithJsonArray([
                 ]
             },
             {
-                type: 'input_dummy'
-            },
-            {
                 type: 'input_value',
                 name: 'blockly_io_tube_data',
                 check: 'Number'
@@ -278,7 +266,7 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: 'blockly_io_led',
-        message0: '彩灯 端口 %1 发光 %2 %3',
+        message0: '彩灯 端口 %1 发光 %2',
         args0: [
             {
                 type: 'field_dropdown',
@@ -293,9 +281,6 @@ Blockly.defineBlocksWithJsonArray([
                         '2'
                     ]
                 ]
-            },
-            {
-                type: 'input_dummy'
             },
             {
                 type: 'input_value',
@@ -352,11 +337,8 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         type: 'blockly_io_print',
-        message0: '串口发送 %1 %2',
+        message0: '串口发送 %1',
         args0: [
-            {
-                type: 'input_dummy'
-            },
             {
                 type: 'input_value',
                 name: 'blockly_io_print_content'
@@ -697,10 +679,6 @@ Blockly.defineBlocksWithJsonArray([
                     [
                         'B',
                         'B'
-                    ],
-                    [
-                        'RGB',
-                        'RGB'
                     ]
                 ]
             }
@@ -746,7 +724,7 @@ Blockly.defineBlocksWithJsonArray([
                 ]
             }
         ],
-        output: 'String',
+        output: null,
         colour: '%{BKY_ROBOT_HUE}',
         tooltip: '',
         helpUrl: ''
@@ -800,7 +778,7 @@ Blockly.defineBlocksWithJsonArray([
                 ]
             }
         ],
-        output: 'String',
+        output: null,
         colour: '%{BKY_ROBOT_HUE}',
         tooltip: '',
         helpUrl: ''
@@ -840,7 +818,7 @@ Blockly.defineBlocksWithJsonArray([
                 ]
             }
         ],
-        output: 'String',
+        output: null,
         colour: '%{BKY_ROBOT_HUE}',
         tooltip: '',
         helpUrl: ''
@@ -848,7 +826,7 @@ Blockly.defineBlocksWithJsonArray([
     {
         type: 'blockly_io_read_array',
         message0: '串口特殊接收',
-        output: 'String',
+        output: null,
         colour: '%{BKY_ROBOT_HUE}',
         tooltip: '',
         helpUrl: ''

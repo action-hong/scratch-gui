@@ -59,9 +59,9 @@ class BLEMsgDispatch {
             for (const callback of callbacks) {
                 callback(msg);
                 // 清空
-                callbacks = [];
             }
         }
+        this.callbacks[type] = [];        
     }
 
     once (type, callback) {

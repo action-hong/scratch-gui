@@ -122,7 +122,17 @@ const BluetoothManager = {
     stopScan (success, failure) {
     // eslint-disable-next-line no-undef
         ble.stopScan(success, failure);
+    },
+    // 模拟数据返回测试
+    // 根据不同type, 直接返回模拟的传感器检测数据
+    // 测试时使用, 生产环境下必须关闭!!!!!!!!!!!!!!!!!!!!!!
+    testSensorCallback (type) {
+        let data = TEST_SENSOR_DATA[type]
+        if (data) {
+            this.receiveData('test_id', data)
+        }
     }
+    
 };
 /**
  * 辅助回调, 保证所有设备同步执行
@@ -147,6 +157,17 @@ class Callback {
             this.f && this.f();
         }
     }
+}
+
+const TEST_SENSOR_DATA = {
+    '001': '#K,001,1,127,255,64,**',
+    '002': '#K,002,2,10,**',
+    '003': '#K,003,1,1,0,**',
+    '004': '#K,004,2,1,**',
+    '005': '#K,005,1,12,15,**',
+    '006': '#K,006,2,100,**',
+    '007': '#K,007,1,32,**',
+    '008': '#K,008,2,9,**'
 }
 
 export default BluetoothManager;

@@ -42,7 +42,7 @@ class Scratch3IkenlBlocks {
             blockly_io_read_voice: this.blocklyReadVoice,
             blockly_io_read_rgb: this.blocklyReadRGB,
             blockly_io_read_light: this.blocklyReadLight,
-            blockly_io_read_patrol_js: this.blocklyReadPatrol
+            blockly_io_read_patrol: this.blocklyReadPatrol
         };
     }
 
@@ -74,57 +74,64 @@ class Scratch3IkenlBlocks {
 
     blocklyKey (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(KEY, number)
+      return this.getBLEReciver(KEY, number, 'blocklyKey', [])
     }
 
     blocklyReadTemp (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(HUMITURE, number)
+      return this.getBLEReciver(HUMITURE, number, 'blocklyReadTemp', [])
     }
 
     blocklyReadUltra (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(ULTRASONIC, number)
+      return this.getBLEReciver(ULTRASONIC, number, 'blocklyReadUltra', [])
     }
 
     blocklyReadHumi (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(HUMITURE, number)
+      return this.getBLEReciver(HUMITURE, number, 'blocklyReadHumi', [])
     }
 
     blocklyReadInfrared (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(INFRARED_REC, number)
+      return this.getBLEReciver(INFRARED_REC, number, 'blocklyReadInfrared', [])
     }
 
     blocklyReadVoice (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(VOICE, number)
+      return this.getBLEReciver(VOICE, number, 'blocklyReadVoice', [])
     }
 
     blocklyReadLight (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(PHOTOSENSITIVE, number)
+      return this.getBLEReciver(PHOTOSENSITIVE, number, 'blocklyReadLight', [])
     }
 
     blocklyReadRGB (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(COLOR, number)
+      const type = String(args.blockly_io_rgb_type)
+      return this.getBLEReciver(COLOR, number, 'blocklyReadRGB', [type])
     }
 
     blocklyReadPatrol (args, util) {
       const number = Number(args.blockly_io_number)
-      return this.getBLEReciver(TRACKING, number)
+      const type = Number(args.blockly_io_patrol_type)
+      return this.getBLEReciver(TRACKING, number, 'blocklyReadPatrol', [type])
     }
 
-    getBLEReciver (type, number) {
+    getBLEReciver (type, number, methodName, args) {
       return new Promise((resolve, reject) => {
         BLEManager.registerRec(type, msg => {
           let val = msg.vals[0]
-          if (type === HUMITURE) {
+          if (methodName === 'blocklyReadHumi') {
             val = msg.vals[1]
+          } else if (type === COLOR) {
+            val = handReadColor(msg, args, val)
+          } else if (type === TRACKING) {
+            val = handReadPatrol(msg, args, val)
           }
           resolve(val)
+          console.log(type, number, val)
         })
         const cmd = `$$K,${type},${number},**`
         // 失败就返回-1
@@ -133,7 +140,8 @@ class Scratch3IkenlBlocks {
           console.log('发送失败', cmd)
           // 清空
           resolve(-10)
-        })
+          // BLEManager.testSensorCallback(type)
+        })        
       });
     }
 
@@ -142,6 +150,32 @@ class Scratch3IkenlBlocks {
       const cmd = `$$E,${type},${number},${val},**`
     }
     
+}
+
+const handReadColor = (msg, args, val) => {
+  if (args.length === 0) {
+    return val
+  }
+  let c = args[0]
+  if (c === 'R') {
+    return msg.vals[0]
+  } else if (c === 'G') {
+    return msg.vals[1]
+  } else if (c === 'B') {
+    return msg.vals[2]
+  }
+  return val
+}
+
+const handReadPatrol = (msg, args, val) => {
+  if (args.length === 0) {
+    return val
+  }
+  let c = args[0]
+  if (c === 2) {
+    return msg.vals[1]
+  }
+  return val
 }
 
 export default Scratch3IkenlBlocks;
